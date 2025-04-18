@@ -58,4 +58,4 @@ This dataset is used for academic research purposes only.
 
 If you use this codebase or dataset for your own research or learning, please cite or refer to:
 
-> JoyBoy4326, "Hybrid Modeling of Employee Attrition using Survival Analysis and Machine Learning", Undergraduate Thesis, 2025.
+> Mengxiao Ma, "Hybrid Modeling of Employee Attrition using Survival Analysis and Machine Learning", Undergraduate Thesis, 2025.
