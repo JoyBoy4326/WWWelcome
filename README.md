@@ -1,9 +1,13 @@
 # Employee Attrition Prediction
 
 This repository contains the implementation and dataset used in a undergraduate thesis project focused on modeling employee attrition using both survival analysis and classification techniques.
+
 **Author**: Mengxiao Ma 
+
 **Institution**: [Brunel University of London]  
+
 **Brunel Number**: 2160910
+
 **Year**: 2025
 
 ## Files
