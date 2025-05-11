@@ -99,49 +99,49 @@ numerical_columns = data.select_dtypes(include=['int64', 'float64']).columns[:16
 chunks = [numerical_columns[:8], numerical_columns[8:16]]
 filenames = ['numeric-vis-1.png', 'numeric-vis-2.png']
 
-for idx, cols in enumerate(chunks):
-    plt.figure(figsize=(14, 16))  # 每图 4x2
-    for i, col in enumerate(cols, 1):
-        plt.subplot(4, 2, i)
-        sns.histplot(data[col], kde=True, bins=30, color=main_color, edgecolor='black')
-        plt.title(f'Distribution of {col}', fontsize=18)
-        plt.xlabel(col, fontsize=15)
-        plt.ylabel('Frequency', fontsize=15)
-    plt.tight_layout()
-    plt.savefig(filenames[idx], dpi=300)
-    plt.close()
+# for idx, cols in enumerate(chunks):
+#     plt.figure(figsize=(14, 16))  # 每图 4x2
+#     for i, col in enumerate(cols, 1):
+#         plt.subplot(4, 2, i)
+#         sns.histplot(data[col], kde=True, bins=30, color=main_color, edgecolor='black')
+#         plt.title(f'Distribution of {col}', fontsize=18)
+#         plt.xlabel(col, fontsize=15)
+#         plt.ylabel('Frequency', fontsize=15)
+#     plt.tight_layout()
+#     plt.savefig(filenames[idx], dpi=300)
+#     plt.close()
+#
+#
+# # Categorical variable distribution visualization
+# for i in range(0, len(categorical_columns), 6):
+#     plt.figure(figsize=(18, 12))
+#     for j, col in enumerate(categorical_columns[i:i+6], 1):
+#         plt.subplot(2, 3, j)
+#         ax = sns.countplot(x=data[col], edgecolor='black', color=main_color)
+#         plt.title(f'Count of {col}', fontsize=18)
+#         plt.xlabel(col, fontsize=15)
+#         plt.ylabel('Count', fontsize=15)
+#         plt.xticks(rotation=30, fontsize=14)
+#         for p in ax.patches:
+#             ax.annotate(f'{int(p.get_height())}', (p.get_x() + p.get_width() / 2., p.get_height()),
+#                         ha='center', va='baseline', fontsize=9, color='black', xytext=(0, 5), textcoords='offset points')
+    # plt.tight_layout()
+    # plt.show()
 
 
-# Categorical variable distribution visualization
-for i in range(0, len(categorical_columns), 6):
-    plt.figure(figsize=(18, 12))
-    for j, col in enumerate(categorical_columns[i:i+6], 1):
-        plt.subplot(2, 3, j)
-        ax = sns.countplot(x=data[col], edgecolor='black', color=main_color)
-        plt.title(f'Count of {col}', fontsize=18)
-        plt.xlabel(col, fontsize=15)
-        plt.ylabel('Count', fontsize=15)
-        plt.xticks(rotation=30, fontsize=14)
-        for p in ax.patches:
-            ax.annotate(f'{int(p.get_height())}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                        ha='center', va='baseline', fontsize=9, color='black', xytext=(0, 5), textcoords='offset points')
-    plt.tight_layout()
-    plt.show()
-
-
-# Distribution visualization of the target variable Attrition
-plt.figure(figsize=(8, 6))
-ax = sns.countplot(x=data['Attrition'], edgecolor='black', color=main_color)
-plt.title('Attrition Distribution (0: Stayed, 1: Left)', fontsize=16)
-plt.xlabel('Attrition', fontsize=12)
-plt.ylabel('Count', fontsize=12)
-plt.xticks(ticks=[0, 1], labels=['Stayed', 'Left'], fontsize=10)
-
-for p in ax.patches:
-    ax.annotate(f'{int(p.get_height())}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='baseline', fontsize=11, color='black', xytext=(0, 5), textcoords='offset points')
-plt.tight_layout()
-plt.show()
+# # Distribution visualization of the target variable Attrition
+# plt.figure(figsize=(8, 6))
+# ax = sns.countplot(x=data['Attrition'], edgecolor='black', color=main_color)
+# plt.title('Attrition Distribution (0: Stayed, 1: Left)', fontsize=16)
+# plt.xlabel('Attrition', fontsize=12)
+# plt.ylabel('Count', fontsize=12)
+# plt.xticks(ticks=[0, 1], labels=['Stayed', 'Left'], fontsize=10)
+#
+# for p in ax.patches:
+#     ax.annotate(f'{int(p.get_height())}', (p.get_x() + p.get_width() / 2., p.get_height()),
+#                 ha='center', va='baseline', fontsize=11, color='black', xytext=(0, 5), textcoords='offset points')
+# plt.tight_layout()
+# plt.show()
 
 # -------- VIF analysis --------
 # Separate features and labels
@@ -290,8 +290,8 @@ def plot_km_one_by_one(data, features, time_col, event_col):
         plt.tight_layout()
         plt.show()
 
-# ---------- Calling drawing functions ----------
-plot_km_one_by_one(data, significant_vars, time_col, event_col)
+# # ---------- Calling drawing functions ----------
+# plot_km_one_by_one(data, significant_vars, time_col, event_col)
 
 # Visualization
 print("Survival Time Distribution:")
@@ -301,24 +301,24 @@ print(data['Survival_Time'].describe())
 print("Event Indicator Distribution:")
 print(data['Event_Indicator'].value_counts())
 
-# Visualizing the survival time distribution
-plt.figure(figsize=(8, 6))
-sns.histplot(data['Survival_Time'], bins=20, kde=True, color='blue')
-plt.title('Distribution of Survival Time (YearsAtCompany)', fontsize=14)
-plt.xlabel('Years at Company', fontsize=12)
-plt.ylabel('Frequency', fontsize=12)
-plt.tight_layout()
-plt.show()
-
-# Visualize the impact of different features on survival time
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='Department', y='Survival_Time', hue='Attrition', data=data)
-plt.title('Survival Time by Department and Attrition Status', fontsize=14)
-plt.xlabel('Department', fontsize=12)
-plt.ylabel('Years at Company', fontsize=12)
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
+# # Visualizing the survival time distribution
+# plt.figure(figsize=(8, 6))
+# sns.histplot(data['Survival_Time'], bins=20, kde=True, color='blue')
+# plt.title('Distribution of Survival Time (YearsAtCompany)', fontsize=14)
+# plt.xlabel('Years at Company', fontsize=12)
+# plt.ylabel('Frequency', fontsize=12)
+# plt.tight_layout()
+# plt.show()
+#
+# # Visualize the impact of different features on survival time
+# plt.figure(figsize=(10, 6))
+# sns.boxplot(x='Department', y='Survival_Time', hue='Attrition', data=data)
+# plt.title('Survival Time by Department and Attrition Status', fontsize=14)
+# plt.xlabel('Department', fontsize=12)
+# plt.ylabel('Years at Company', fontsize=12)
+# plt.xticks(rotation=45)
+# plt.tight_layout()
+# plt.show()
 
 # -------- Cox（V2） --------
 # One-hot encode categorical variables
@@ -408,7 +408,6 @@ print(f"C-index: {cox_model.concordance_index_:.2f}")
 # Step 7: Output the final model results
 print("Finally, the Cox model is completed and all steps are executed.")
 
-
 # RSF model (long term, predicting when to churn)
 import numpy as np
 from sksurv.ensemble import RandomSurvivalForest
@@ -490,17 +489,38 @@ auc_scores, auc_errors = cumulative_dynamic_auc(
     y_train_rsf, y_test_rsf, rsf.predict(X_test_rsf), time_points
 )
 
-# Plotting time-dependent AUC curves
-plt.figure(figsize=(8, 6))
-plt.plot(time_points, auc_scores, marker="o", linestyle="-", label="RSF AUC")
-plt.fill_between(time_points, auc_scores - auc_errors, auc_scores + auc_errors, alpha=0.2)
-plt.xlabel("Time")
-plt.ylabel("AUC")
-plt.title("Time-dependent AUC for RSF")
-plt.legend()
-plt.show()
+# # Plotting time-dependent AUC curves
+# plt.figure(figsize=(8, 6))
+# plt.plot(time_points, auc_scores, marker="o", linestyle="-", label="RSF AUC")
+# plt.fill_between(time_points, auc_scores - auc_errors, auc_scores + auc_errors, alpha=0.2)
+# plt.axhline(y=0.9, color="red", linestyle="--", linewidth=1,label="AUC = 0.90")
+# plt.xlabel("Time")
+# plt.ylabel("AUC")
+# plt.title("Time-dependent AUC for RSF")
+# plt.legend()
+# plt.show()
 
 print(f"RSF Time-dependent AUC at different time points: {auc_scores}")
+
+# ======================================================
+times_rsf   = getattr(rsf, "event_times_", rsf.unique_times_)
+surv_fns    = rsf.predict_survival_function(X_test_rsf)
+
+p3_list, p5_list = [], []
+
+for fn in surv_fns:
+    S3 = fn(3)
+    S5 = fn(5)
+    p3_list.append(1 - S3)
+    p5_list.append(1 - S5)
+
+prob_df = pd.DataFrame({
+    "Emp_ID" : X_test_rsf.index,
+    "Prob_≤3yr": np.round(p3_list, 3),
+    "Prob_≤5yr": np.round(p5_list, 3)
+})
+prob_df.to_csv("rsf_emp_window_probs.csv", index=False)
+print(prob_df.head())
 
 # XGBoost model (elimination)
 from xgboost import XGBClassifier
@@ -556,14 +576,14 @@ print(f"Accuracy: {accuracy_xgb:.3f}")
 print("\nClassification Report：")
 print(classification_report(y_test_xgb, y_pred_xgb))
 
-# Plotting the confusion matrix
-plt.figure(figsize=(6, 4))
-sns.heatmap(confusion_matrix(y_test_xgb, y_pred_xgb), annot=True, fmt="d", cmap="Blues",
-            xticklabels=["Stayed", "Left"], yticklabels=["Stayed", "Left"])
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("XGBoost Confusion Matrix")
-plt.show()
+# # Plotting the confusion matrix
+# plt.figure(figsize=(6, 4))
+# sns.heatmap(confusion_matrix(y_test_xgb, y_pred_xgb), annot=True, fmt="d", cmap="Blues",
+#             xticklabels=["Stayed", "Left"], yticklabels=["Stayed", "Left"])
+# plt.xlabel("Predicted")
+# plt.ylabel("Actual")
+# plt.title("XGBoost Confusion Matrix")
+# plt.show()
 
 # LightGBM model (short-term, slightly inferior to catboost)
 import re
@@ -576,7 +596,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Read data
-file_path = r"C:\Users\27955\Desktop\毕业论文\dataset\3\V1datasetAttrition.csv"
+file_path = r"C:\Users\27955\Desktop\Dissertation\dataset\3\V1datasetAttrition.csv"
 data = pd.read_csv(file_path)
 
 # Select categorical and numerical variables
@@ -647,14 +667,14 @@ print(f"Accuracy: {accuracy_lgb:.3f}")
 print("\nClassification Report：")
 print(classification_report(y_test, y_pred, zero_division=1))
 
-# Plot the confusion matrix
-plt.figure(figsize=(6, 4))
-sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, fmt="d", cmap="Blues",
-            xticklabels=["Stayed", "Left"], yticklabels=["Stayed", "Left"])
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("LightGBM Confusion Matrix")
-plt.show()
+# # Plot the confusion matrix
+# plt.figure(figsize=(6, 4))
+# sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, fmt="d", cmap="Blues",
+#             xticklabels=["Stayed", "Left"], yticklabels=["Stayed", "Left"])
+# plt.xlabel("Predicted")
+# plt.ylabel("Actual")
+# plt.title("LightGBM Confusion Matrix")
+# plt.show()
 
 # CatBoost (short-term, direct classification of loss)
 import pandas as pd
@@ -665,7 +685,6 @@ from catboost import CatBoostClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score, accuracy_score, f1_score, classification_report, confusion_matrix, precision_recall_curve
 
-file_path = r"C:\Users\27955\Desktop\毕业论文\dataset\3\V1datasetAttrition.csv"
 data = pd.read_csv(file_path)
 
 categorical_features = data.select_dtypes(include=['object']).columns.tolist()
@@ -725,14 +744,14 @@ print(f"Accuracy: {accuracy_catboost:.3f}")
 print("\nClassification Report：")
 print(classification_report(y_test, y_pred_catboost))
 
-# Plot the confusion matrix
-plt.figure(figsize=(6, 4))
-sns.heatmap(confusion_matrix(y_test, y_pred_catboost), annot=True, fmt="d", cmap="Blues",
-            xticklabels=["Stayed", "Left"], yticklabels=["Stayed", "Left"])
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("CatBoost Confusion Matrix")
-plt.show()
+# # Plot the confusion matrix
+# plt.figure(figsize=(6, 4))
+# sns.heatmap(confusion_matrix(y_test, y_pred_catboost), annot=True, fmt="d", cmap="Blues",
+#             xticklabels=["Stayed", "Left"], yticklabels=["Stayed", "Left"])
+# plt.xlabel("Predicted")
+# plt.ylabel("Actual")
+# plt.title("CatBoost Confusion Matrix")
+# plt.show()
 
 import numpy as np
 import pandas as pd
@@ -785,6 +804,16 @@ plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.title("Fusion Model Confusion Matrix (Short-term)")
 plt.show()
+
+shortterm_df = pd.DataFrame({
+    "Emp_ID": X_test.index,   # 可改为员工编号列（如 data['EmployeeID']）如果有
+    "Pred_Prob": np.round(final_pred_proba, 3),
+    "Prediction": final_pred,
+    "Risk_Level": ["High" if prob > best_threshold else "Low" for prob in final_pred_proba]
+})
+
+print("\nShort-term Prediction Results (Fusion Model):")
+print(shortterm_df.head())
 
 # ========== Long-term prediction (churn time) — RSF only ==========
 
